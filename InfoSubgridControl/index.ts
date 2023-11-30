@@ -5,7 +5,7 @@ type DataSet = ComponentFramework.PropertyTypes.DataSet;
 import {createRoot, Root} from "react-dom/client";
 import { createElement } from 'react';
 import { DadosClienteApp, DadosClienteAppProps } from './DadosClienteApp';
-import App from './App';
+// import App from './App';
 
 
 export class InfoSubgridControl implements ComponentFramework.StandardControl<IInputs, IOutputs> {
@@ -39,6 +39,7 @@ export class InfoSubgridControl implements ComponentFramework.StandardControl<II
         // Add control initialization code
         this._root = createRoot(container);
         this._notifyOutputChanged = notifyOutputChanged;
+        this._container = container;
     }
 
 
@@ -48,17 +49,71 @@ export class InfoSubgridControl implements ComponentFramework.StandardControl<II
      */
     public updateView(context: ComponentFramework.Context<IInputs>): void
     {
-        // Prepare the props for DadosClienteApp component
-        // const dadosClienteAppProps: DadosClienteAppProps = {
-        //     // Populate the props as required
-        //     dadosCliente: {/* client data here */},
-        //     dadosClienteApp: {/* additional data */},
-        //     setDadosClienteApp: {/* function to update state */},
-        //     context: context
-        // };
 
+ // Dados fictícios criados para teste
+ const dadosFicticios = {
+    agencia: "1234",
+    conta: "000123456",
+    cpfCnpj: "123.456.789-00",
+    chpras: "Valor de Chpras",
+    opcaoUra: "Opção de URA selecionada",
+    servicoAtual: "Serviço Atual",
+    funcional: "Funcionalidade X",
+    status: "Ativo"
+};
+
+// Supondo que DadosClienteAppProps espera uma estrutura de objeto com esses campos
+const props: DadosClienteAppProps = {
+    agencia: dadosFicticios.agencia,
+    conta: dadosFicticios.conta,
+    cpfCnpj: dadosFicticios.cpfCnpj,
+    chpras: dadosFicticios.chpras,
+    opcaoUra: dadosFicticios.opcaoUra,
+    servicoAtual: dadosFicticios.servicoAtual,
+    funcional: dadosFicticios.funcional,
+    status: dadosFicticios.status
+};
+
+
+
+
+        // context.webAPI.retrieveMultipleRecords("entityLogicalName", "?$select=fields").then(
+        //     (response) => {
+        //         const data = response.entities.map((entity) => {
+        //             // Mapeie sua entidade para o formato esperado no DadosClienteAppProps
+        //             return {
+        //                 agencia: entity.agencia,
+        //                 conta: entity.conta,
+        //                 cpfCnpj: entity.cpfCnpj,
+        //                 chpras: entity.chpras,
+        //                 opcaoUra: entity.opcaoUra,
+        //                 servicoAtual: entity.servicoAtual,
+        //                 funcional: entity.funcional,
+        //                 status: entity.status,
+        //             };
+        //         });
+
+        //         // Supondo que você só precise do primeiro registro para seu componente
+        //         if(data.length > 0) {
+        //             const props: DadosClienteAppProps = data[0];
+        //             this.renderizarComponentizacaoComDados(props);
+        //         }
+        //     },
+        //     (error) => {
+        //         console.error(error);
+        //         // Trate o erro conforme necessário
+        //     }
+        // );
+
+        this.renderizarComponentizacaoComDados(props);
         // Render the DadosClienteApp component with the prepared props
-        this._root.render(createElement(App));
+        // this._root.render(createElement(DadosClienteApp));
+    }
+
+    private renderizarComponentizacaoComDados(dadosClienteAppProps: DadosClienteAppProps): void {
+        // Render the DadosClienteApp component with the prepared props
+    
+        this._root.render(createElement(DadosClienteApp, dadosClienteAppProps));
     }
 
     /**

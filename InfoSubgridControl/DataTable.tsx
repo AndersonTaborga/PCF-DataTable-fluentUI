@@ -60,9 +60,9 @@ const items = [
 ];
 
 const columns = [
-  { columnKey: "file", label: "File" },
-  { columnKey: "author", label: "Author" },
-  { columnKey: "lastUpdated", label: "Last updated" },
+  { columnKey: "file", label: "Agencia" },
+  { columnKey: "author", label: "Conta" },
+  { columnKey: "lastUpdated", label: "" },
   { columnKey: "lastUpdate", label: "Last update" },
 ];
 

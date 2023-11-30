@@ -1,18 +1,27 @@
-import { Badge, Divider, FluentProvider, mergeClasses, Slider, SliderProps, Tooltip, useId } from '@fluentui/react-components'
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-
+import { FluentProvider, Badge } from '@fluentui/react-components';
 
 export interface DadosClienteAppProps {
-    dadosCliente: any;
-    dadosClienteApp: any;
-    setDadosClienteApp: any;
-    context : any;
+    agencia: string;
+    conta: string;
+    cpfCnpj: string;
+    chpras: string; // Assuming "Chpras" represents some sort of shopping data
+    opcaoUra: string;
+    servicoAtual: string;
+    funcional: string;
+    status: string,
 }
-//Submeter esses dados ao repo original
 
-export const DadosClienteApp: React.FC<DadosClienteAppProps> = (props) => {
-
+export const DadosClienteApp: React.FC<DadosClienteAppProps> = ({
+    agencia,
+    conta,
+    cpfCnpj,
+    chpras,
+    opcaoUra,
+    servicoAtual,
+    funcional,
+    status
+}) => {
     return (
         <FluentProvider>
             <div className="dadosClienteApp">
@@ -24,38 +33,39 @@ export const DadosClienteApp: React.FC<DadosClienteAppProps> = (props) => {
                         <Badge color="brand">Cliente</Badge>
                     </div>
                 </div>
+
                 <div className="dadosClienteApp__content">
                     <div className="dadosClienteApp__content__item">
-                        <h3>Nome</h3>
-                        <p>{props.dadosCliente.nome}</p>
+                        <h3>Agência</h3>
+                        <p>{agencia}</p>
                     </div>
                     <div className="dadosClienteApp__content__item">
-                        <h3>Idade</h3>
-                        <p>{props.dadosCliente.idade}</p>
+                        <h3>Conta</h3>
+                        <p>{conta}</p>
                     </div>
                     <div className="dadosClienteApp__content__item">
-                        <h3>CPF</h3>
-                        <p>{props.dadosCliente.cpf}</p>
+                        <h3>CPF/CNPJ</h3>
+                        <p>{cpfCnpj}</p>
                     </div>
                     <div className="dadosClienteApp__content__item">
-                        <h3>RG</h3>
-                        <p>{props.dadosCliente.rg}</p>
+                        <h3>Compras</h3>
+                        <p>{chpras}</p>
                     </div>
                     <div className="dadosClienteApp__content__item">
-                        <h3>Endereço</h3>
-                        <p>{props.dadosCliente.endereco}</p>
+                        <h3>Opção URA</h3>
+                        <p>{opcaoUra}</p>
                     </div>
                     <div className="dadosClienteApp__content__item">
-                        <h3>Telefone</h3>
-                        <p>{props.dadosCliente.telefone}</p>
+                        <h3>Serviço Atual</h3>
+                        <p>{servicoAtual}</p>
                     </div>
                     <div className="dadosClienteApp__content__item">
-                        <h3>E-mail</h3>
-                        <p>{props.dadosCliente.email}</p>
+                        <h3>Funcional</h3>
+                        <p>{funcional}</p>
                     </div>
                     <div className="dadosClienteApp__content__item">
-                        <h3>Observações</h3>
-                        <p>{props.dadosCliente.observacoes}</p>
+                        <h3>Status</h3>
+                        <p>{status}</p>
                     </div>
                 </div>
             </div>
